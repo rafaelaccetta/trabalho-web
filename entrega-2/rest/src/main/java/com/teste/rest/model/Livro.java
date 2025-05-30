@@ -3,10 +3,7 @@ package com.teste.rest.model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,10 +25,13 @@ public class Livro {
     private int qtdEstoque;
     private BigDecimal preco;
     private LocalDate dataCadastro;
+    @ManyToOne
+    private Categoria categoria;
+
 
 
     public Livro(String imagem, String nome, String slug, String descricao, boolean disponivel, int qtdEstoque,
-            BigDecimal preco, LocalDate dataCadastro) {
+            BigDecimal preco, LocalDate dataCadastro, Categoria categoria) {
         this.imagem = imagem;
         this.nome = nome;
         this.slug = slug;
@@ -40,5 +40,6 @@ public class Livro {
         this.qtdEstoque = qtdEstoque;
         this.preco = preco;
         this.dataCadastro = dataCadastro;
+        this.categoria = categoria;
     }
 }
