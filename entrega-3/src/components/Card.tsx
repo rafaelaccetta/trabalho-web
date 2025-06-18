@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import type Livro from "../interfaces/Livro";
 import { type LivroCarrinho } from "../pages/CardsPorSlugCategoriaPage";
 
@@ -15,10 +16,7 @@ const Card = ({livro, adicionarLivro, subtrairLivro, livroNoCarrinho} : Props) =
         <div className="card-body">
             <h5 className="card-title">{livro.nome}</h5>
             <p className="card-text">{livro.descricao}</p>
-
-        </div>
-        <div>
-            <small>
+            <small className="text-muted">
                 R${" "}
                 {livro.preco.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
@@ -26,9 +24,23 @@ const Card = ({livro, adicionarLivro, subtrairLivro, livroNoCarrinho} : Props) =
                     useGrouping: true
                 })}
             </small>
-        </div>
 
+        </div>
+        <div className="card-footer mb-4">
+          <a href={"/livro/" + livro.id} className="btn btn-outline-secondary mb-2 w-100">Ver Detalhes</a>
+          <div style={livroNoCarrinho ? {display: "block"} : {display: "none"}} >
+            <div className="btn-group w-100">
+              <button onClick={() => subtrairLivro(livro)} type="button" className="btn btn-outline-secondary btn-sm">-</button>
+              <button type="button" className="btn btn-outline-secondary btn-sm">{livroNoCarrinho?.quantidade}</button>
+              <button onClick={() => adicionarLivro(livro)} type="button" className="btn btn-outline-secondary btn-sm">+</button>
+            </div>
+          </div>
+          <button style={livroNoCarrinho ? {display: "none"} : {display: "block"}} onClick={() => adicionarLivro(livro)} type="button" className="btn btn-success btn-sm w-100">Comprar</button>
+      
+            
+        </div>
     </div>
+
 
     /*<div class="col-md-4">
             <div class="card mb-4 shadow-sm">

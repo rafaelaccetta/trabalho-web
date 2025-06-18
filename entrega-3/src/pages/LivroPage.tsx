@@ -1,4 +1,45 @@
+import { useState } from "react";
+import useLivroStore from "../store/LivroStore";
+import { useNavigate, useParams } from "react-router-dom";
+import useRecuperarLivroPorId from "../hooks/useRecuperarLivroPorId";
+import useRemoverLivroPorId from "../hooks/useRemoverivroPorId";
+
 const LivroPage = () => {
+  const [removido, setRemovido] = useState(false);
+  const mensagem = useLivroStore((s) => s.mensagem);
+  const setMensagem = useLivroStore((s) => s.setMensagem);
+  const setLivroSelecionado = useLivroStore((s) => s.setLivroSelecionado);
+
+  const {id} = useParams();
+  const navigate = useNavigate();
+
+  const {
+    data: livro,
+    isPending: carregandoLivro,
+    error: errorLivro
+  } = useRecuperarLivroPorId(+id!, removido);
+
+  const {
+    mutate: removerLivro,
+    error: errorRemocaoLivro
+  } = useRemoverLivroPorId();
+
+  const tratarRemocao = (id: number) => {
+    setMensagem("Livro removido com sucesso!");
+    removerLivro(id);
+    setRemovido(true);
+  };
+
+  if(carregandoLivro) return (
+    <p>Carregando livro...</p>
+  );
+
+  if(errorLivro) throw errorLivro;
+  if(errorRemocaoLivro) throw errorRemocaoLivro;
+
+
+
+
   return (
     <>
     
@@ -7,13 +48,19 @@ const LivroPage = () => {
             <div className="row justify-content-center" style={{marginLeft: "auto"}} >
                 <div className="col-md-4">
                     <div className="card mb-4 shadow-sm">
-                        <img src="https://picsum.photos/400/400?random=1" style={{objectFit: "fill"}} alt="Imagem do Produto" className="card-img-top"/>
+                        <img src="https://picsum.photos/600" alt={livro.nome} className="card-img-top"/>
                         <div className="card-body">
                           <h5><span className="badge rounded-pill text-bg-info">Lançamento!</span></h5>  
-                          <h2 className="card-title">Título do livro </h2>
+                          <h2 className="card-title">{livro.nome}</h2>
                             <h4 className="card-text">Autor</h4>
                             <br/>
-                            <h5 className="card-text">R$99,99</h5>
+                            <h5 className="card-text">R$ {" "}
+                              {livro.preco.toLocaleString("pt-BR", {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                                useGrouping: true
+                              })}
+                            </h5>
                         </div>
                     </div>
                 </div>
@@ -28,7 +75,7 @@ const LivroPage = () => {
                               </h2>
                               <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat nostrum repellat in suscipit earum nobis similique magnam facilis, id autem dicta alias quia tempore enim voluptas iure libero explicabo nemo?  
+                                  {livro.descricao}  
                                 </div>
                               </div>
                             </div>
@@ -40,7 +87,7 @@ const LivroPage = () => {
                               </h2>
                               <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
-                                  <p>Autor: XXXXXX</p>
+                                  <p>Estoque: {livro.qtdEstoque}</p>
                                   <p>Editora: XXXXXX</p>
                                   <p>Idioma: XXXXXX</p>
                                   <p>Número de Páginas: XXXXXX</p>
@@ -56,7 +103,7 @@ const LivroPage = () => {
                               <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div className="accordion-body">
                                   <div className="alert alert-danger" role="alert">
-                                    Livro esgotado!
+                                    {livro.disponivel ? "Disponível :)" : "Inisponível :("}
                                   </div>                                  
                                 </div>
                               </div>
