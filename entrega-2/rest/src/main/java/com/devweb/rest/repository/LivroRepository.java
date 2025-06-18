@@ -1,4 +1,4 @@
-package com.teste.rest.repository;
+package com.devweb.rest.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.teste.rest.model.Livro;
+import com.devweb.rest.model.Livro;
 
 import jakarta.persistence.LockModeType;
 

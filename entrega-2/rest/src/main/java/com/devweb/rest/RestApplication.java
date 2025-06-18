@@ -1,4 +1,4 @@
-package com.teste.rest;
+package com.devweb.rest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.teste.rest.model;
+package com.devweb.rest.model;
 
 import java.util.List;
 

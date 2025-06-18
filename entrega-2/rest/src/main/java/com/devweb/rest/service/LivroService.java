@@ -1,4 +1,4 @@
-package com.teste.rest.service;
+package com.devweb.rest.service;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.teste.rest.exception.LivroNaoEncontradoException;
-import com.teste.rest.model.Livro;
-import com.teste.rest.repository.LivroRepository;
+import com.devweb.rest.exception.EntidadeNaoEncontradaException;
+import com.devweb.rest.model.Livro;
+import com.devweb.rest.repository.LivroRepository;
 
 @Service
 public class LivroService {
@@ -29,7 +29,7 @@ public class LivroService {
     @Transactional
     public Livro alterarLivro(Livro livro) {
         livroRepository.recuperarLivroPorIdComLock(livro.getId())
-            .orElseThrow(() -> new LivroNaoEncontradoException(
+            .orElseThrow(() -> new EntidadeNaoEncontradaException(
                 "Livro número " + livro.getId() + " não encontrado."));
         return livroRepository.save(livro);
     }
@@ -41,7 +41,7 @@ public class LivroService {
 
     public Livro recuperarLivroPorId(long id) {
         return livroRepository.recuperarLivroPorId(id)
-            .orElseThrow(() -> new LivroNaoEncontradoException(
+            .orElseThrow(() -> new EntidadeNaoEncontradaException(
                 "Livro número " + id + " não encontrado."));
     }
 

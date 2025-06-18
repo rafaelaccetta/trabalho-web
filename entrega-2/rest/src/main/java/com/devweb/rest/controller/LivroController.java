@@ -1,4 +1,4 @@
-package com.teste.rest.controller;
+package com.devweb.rest.controller;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import com.teste.rest.model.Livro;
-import com.teste.rest.model.ResultadoPaginado;
-import com.teste.rest.service.LivroService;
+import com.devweb.rest.model.Livro;
+import com.devweb.rest.model.ResultadoPaginado;
+import com.devweb.rest.service.LivroService;
 
 @CrossOrigin("http://localhost:5173")
 @RestController
