@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import Usuario from "../interfaces/Usuario";
+import type Usuario from "../interfaces/Usuario";
 import isErrorResponse from "../util/isErrorResponse";
 
 const efetuarLogin = async (usuario: Usuario) => {

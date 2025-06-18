@@ -6,6 +6,9 @@ import CarrinhoPage from "../pages/CarrinhoPage";
 import LoginPage from "../pages/LoginPage";
 import LivroPage from "../pages/LivroPage";
 import PedidosPage from "../pages/PedidosPage";
+import ErrorPage from "../pages/ErrorPage";
+import FavoritosPage from "../pages/FavoritosPage";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +24,14 @@ const router = createBrowserRouter([
             {path: "pedidos", element: <PedidosPage />},
             {path: "login", element: <LoginPage />},
             {path: "livros/:id", element: <LivroPage />}
+        ]
+    },
+    {
+        path: "/",
+        element: <PrivateRoutes />,
+        errorElement: <ErrorPage />,
+        children: [
+            {path: "favoritos", element: <FavoritosPage />}
         ]
     }
 ])

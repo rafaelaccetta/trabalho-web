@@ -14,6 +14,7 @@ const queryClient = new QueryClient({
     }
   }
 })
+export default queryClient;
 
 createRoot(document.getElementById('root')!).render(
   <QueryClientProvider client={queryClient}>

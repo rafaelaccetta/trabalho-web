@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import Livro from "../interfaces/Livro";
+import type Livro from "../interfaces/Livro";
 import isErrorResponse from "../util/isErrorResponse";
 
 const useRecuperarLivrosPorSlugCategoria = (slugCategororia?: string) => {
