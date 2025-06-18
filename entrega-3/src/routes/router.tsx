@@ -9,6 +9,7 @@ import PedidosPage from "../pages/PedidosPage";
 import ErrorPage from "../pages/ErrorPage";
 import FavoritosPage from "../pages/FavoritosPage";
 import PrivateRoutes from "./PrivateRoutes";
+import CardsPorSlugCategoriaPage from "../pages/CardsPorSlugCategoriaPage";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +20,13 @@ const router = createBrowserRouter([
                 path: "",
                 element: <HomePage />
             },
-            {path: "livros", element: <LivrosPage />},
+            {
+                path: "livros",
+                element: <LivrosPage />,
+                children: [
+                    {path: ":slugCategoria?", element: <CardsPorSlugCategoriaPage />}
+                ]
+            },
             {path: "carrinho", element: <CarrinhoPage />},
             {path: "pedidos", element: <PedidosPage />},
             {path: "login", element: <LoginPage />},

@@ -2,16 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import type Livro from "../interfaces/Livro";
 import isErrorResponse from "../util/isErrorResponse";
 
-const useRecuperarLivrosPorSlugCategoria = (slugCategororia?: string) => {
+const useRecuperarLivrosPorSlugCategoria = (slugCategoria?: string) => {
   const recuperarLivrosPorSlugCategoria = async (
-    slugCategororia?: string
+    slugCategoria?: string
   ): Promise<Livro[]> => {
     await new Promise((resolve) => {
-      setTimeout(resolve, 2000);
+      setTimeout(resolve, 500);
     });
     const response = await fetch(
       "http://localhost:8080/livros" +
-        (slugCategororia ? "/categoria/" + slugCategororia : "")
+        (slugCategoria ? "/categoria/" + slugCategoria : "")
     );
     if (!response.ok) {
       const error: any = await response.json();
@@ -19,8 +19,8 @@ const useRecuperarLivrosPorSlugCategoria = (slugCategororia?: string) => {
         throw error;
       } else {
         throw new Error(
-          "Ocorreu um erro ao recuperar os livros com slugCategororia = " +
-            slugCategororia +
+          "Ocorreu um erro ao recuperar os livros com slugCategoria = " +
+            slugCategoria +
             ". Status code = " +
             response.status
         );
@@ -30,10 +30,10 @@ const useRecuperarLivrosPorSlugCategoria = (slugCategororia?: string) => {
   };
 
   return useQuery({
-    queryKey: slugCategororia
-      ? ["livros", "categoria", slugCategororia]
+    queryKey: slugCategoria
+      ? ["livros", "categoria", slugCategoria]
       : ["livros"],
-    queryFn: () => recuperarLivrosPorSlugCategoria(slugCategororia),
+    queryFn: () => recuperarLivrosPorSlugCategoria(slugCategoria),
     staleTime: 10_000,
   });
 };
