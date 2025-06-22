@@ -59,7 +59,7 @@ const CarrinhoPage = () => {
     error: errorLivros,
   } = useRecuperarLivros();
 
-  if (carregandoLivros) return <CarrinhoPlaceholderPage />;
+  if (carregandoLivros) return <p>Carregando carrinho...</p>;
   if (errorLivros) throw errorLivros;
 
   const livrosNoCarrinho: LivroComLivroCarrinho[] = [];
