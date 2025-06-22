@@ -48,7 +48,7 @@ const LivroPage = () => {
             <div className="row justify-content-center" style={{marginLeft: "auto"}} >
                 <div className="col-md-4">
                     <div className="card mb-4 shadow-sm">
-                        <img src="https://picsum.photos/600" alt={livro.nome} className="card-img-top"/>
+                        <img src={livro.imagem} alt={livro.nome} className="card-img-top"/>
                         <div className="card-body">
                           <h5><span className="badge rounded-pill text-bg-info">Lançamento!</span></h5>  
                           <h2 className="card-title">{livro.nome}</h2>
