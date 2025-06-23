@@ -30,10 +30,12 @@ const LoginForm = () => {
     const usuario: Usuario = { conta, senha };
 
     efetuarLogin(usuario, {
-      onSuccess: (tokenResponse: TokenResponse) => {
-        console.log(tokenResponse.token)
-        if (tokenResponse.token > 0) {
-          setUsuarioLogado(tokenResponse.token);
+      onSuccess: (tokenResponse: any) => {
+        console.log(tokenResponse);
+        console.log(tokenResponse.Token);
+        
+        if (tokenResponse.Token > 0) {
+          setUsuarioLogado(tokenResponse.Token);
           if (location.state?.destino) {
             navigate(location.state.destino);
           } else {

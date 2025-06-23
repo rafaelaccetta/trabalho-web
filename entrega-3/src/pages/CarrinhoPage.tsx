@@ -87,6 +87,16 @@ const CarrinhoPage = () => {
     if (livroCarrinho) livrosNoCarrinho.push({ livro, livroCarrinho });
   });
 
+    if(livrosNoCarrinho.length == 0) return (
+    <>
+      <h4>Carrinho vazio!</h4>
+        <div className="">
+          <a href="./livros" className="btn btn-secondary">
+            Continuar Comprando
+          </a>
+        </div>
+    </>)
+
   return (
     <div className="container mt-4" style={{ marginTop: "720px" }}>
       <section className="py-5 bg-light">
