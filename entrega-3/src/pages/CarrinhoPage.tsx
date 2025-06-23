@@ -53,6 +53,23 @@ const CarrinhoPage = () => {
     });
   };
 
+  const alterarQuantidade = (livro: Livro, novaQuantidade: number) => {
+    setCarrinho((prevCarrinho: LivroCarrinho[]) => {
+      const existe = prevCarrinho.find((item) => item.idLivro === livro.id);
+      if (existe) {
+        const novoCarrinho: LivroCarrinho[] = prevCarrinho.map(
+          (item: LivroCarrinho) =>
+            item.idLivro === livro.id
+              ? { idLivro: item.idLivro, quantidade: novaQuantidade }
+              : item
+        );
+        return novoCarrinho.filter((item) => item.quantidade > 0);
+      } else {
+        throw new Error("Erro ao alterar quantidade no carrinho.");
+      }
+    });
+  };
+
   const {
     data: livros,
     isPending: carregandoLivros,
@@ -119,32 +136,21 @@ const CarrinhoPage = () => {
                     })}
                   </td>
                   <td className="text-center">
-                    <div className="btn-group w-100">
-                      <button
-                        onClick={() =>
-                          subtrairLivro(livroComLivroCarrinho.livro)
+                    <input
+                      type="number"
+                      className="form-control text-center"
+                      style={{ maxWidth: "80px" }}
+                      value={livroComLivroCarrinho.livroCarrinho.quantidade}
+                      onChange={(e) => {
+                        const valor = e.target.valueAsNumber;
+                        if (!Number.isNaN(valor)) {
+                          alterarQuantidade(
+                            livroComLivroCarrinho.livro,
+                            e.target.valueAsNumber
+                          );
                         }
-                        type="button"
-                        className="btn btn-outline-secondary btn-sm"
-                      >
-                        -
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-outline-secondary btn-sm"
-                      >
-                        {livroComLivroCarrinho.livroCarrinho.quantidade}
-                      </button>
-                      <button
-                        onClick={() =>
-                          adicionarLivro(livroComLivroCarrinho.livro)
-                        }
-                        type="button"
-                        className="btn btn-outline-secondary btn-sm"
-                      >
-                        +
-                      </button>
-                    </div>
+                      }}
+                    />
                   </td>
                   <td className="text-center">
                     {(
@@ -157,7 +163,7 @@ const CarrinhoPage = () => {
                     })}
                   </td>
                   <td className="text-center">
-                    <button className="btn btn-danger btn-sm">Remover</button>
+                    <button className="btn btn-danger btn-sm" onClick={() => alterarQuantidade(livroComLivroCarrinho.livro, 0)}>Remover</button>
                   </td>
                 </tr>
               ))}
