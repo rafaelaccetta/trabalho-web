@@ -50,6 +50,27 @@ const CardsPorSlugCategoriaPage = () => {
         });
     };
 
+    const [favoritos, setFavoritos] = useState(() => {
+        const itensDeFavoritos = localStorage.getItem("favoritos");
+        return itensDeFavoritos ? JSON.parse(itensDeFavoritos) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem("favoritos", JSON.stringify(favoritos))
+    }, [favoritos]);
+
+    const alterarFavorito = (livro: Livro) => {
+        setFavoritos((prevFavoritos: Number[]) => {
+            const favorito = prevFavoritos.find((id) => id === livro.id);
+            if (favorito) {
+                return prevFavoritos.filter((id) => id != livro.id)
+            } else {
+                return [...prevFavoritos, livro.id]
+            }
+        }
+        )
+    }
+
     const { slugCategoria } = useParams();
     const {
         data: livros,
@@ -67,6 +88,14 @@ const CardsPorSlugCategoriaPage = () => {
         );
         livrosNoCarrinho.push(livroCarrinho ? livroCarrinho : null);
     })
+
+    const livrosNosFavoritos: (boolean)[] = [];
+    livros.forEach((livro) => {
+        const favorito = favoritos.find(
+            (id: number) => id === livro.id
+        );
+        livrosNosFavoritos.push( favorito ? true : false);
+    })
     
     return (
     <>
@@ -81,8 +110,10 @@ const CardsPorSlugCategoriaPage = () => {
             <Card
               livro={livro}
               livroNoCarrinho={livrosNoCarrinho[index]}
+              livroNosFavoritos={livrosNosFavoritos[index]}
               adicionarLivro={adicionarLivro}
               subtrairLivro={subtrairLivro}
+              alterarFavorito={alterarFavorito}
             />
           </div>
         ))}

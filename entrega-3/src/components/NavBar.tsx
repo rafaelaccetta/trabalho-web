@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import book from "../assets/icons/book.svg"
 import login from "../assets/icons/login.svg"
+import heart from "../assets/icons/heart.svg"
 import shopping_bag from "../assets/icons/shopping_bag.svg"
 import useUsuarioStore from '../store/UsuarioStore'
 import useLivroStore from '../store/LivroStore'
@@ -21,6 +22,7 @@ const NavBar = () => {
             height="24"
             className="d-inline-block align-text-top"
           />
+          {" "}
           Livraria
         </NavLink>
         <button
@@ -44,14 +46,18 @@ const NavBar = () => {
           </div>
           <div className="navbar-nav">
             <NavLink className="nav-item nav-link" to="/favoritos" style={{display: usuarioLogado ? "block" : "none"}}>
+                <img src={heart} alt="Favoritos" />
+                {" "}
                 Favoritos
                 </NavLink>
             <NavLink className="nav-item nav-link" to="/carrinho">
               <img src={shopping_bag} alt="Carrinho"/>
+              {" "}
               Carrinho
             </NavLink>
             <NavLink className="nav-item nav-link" to="/login">
               <img src={login} alt="Login"/>
+              {" "}
               {usuarioLogado ? "Sair" : "Entrar"}
             </NavLink>
           </div>
