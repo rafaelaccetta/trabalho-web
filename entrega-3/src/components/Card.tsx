@@ -26,7 +26,11 @@ const Card = ({
 
   return (
     <div className="card mb-4 shadow-sm">
-      <img src={livro.imagem} alt={livro.nome} className="card-img-top" />
+      <img
+        src={livro.imagem.startsWith("/") ? livro.imagem : "/" + livro.imagem}
+        alt={livro.nome}
+        className="card-img-top"
+      />
       <div className="card-body">
         <h5 className="card-title">{livro.nome}</h5>
         <p className="card-text">{livro.descricao}</p>
