@@ -35,7 +35,8 @@ const LoginForm = () => {
         console.log(tokenResponse.Token);
         
         if (tokenResponse.Token > 0) {
-          setUsuarioLogado(tokenResponse.Token);
+          setUsuarioLogado(tokenResponse.Token); 
+          localStorage.setItem("usuarioLogado", tokenResponse.Token);
           if (location.state?.destino) {
             navigate(location.state.destino);
           } else {
