@@ -40,99 +40,90 @@ public class RestApplication implements CommandLineRunner{
 		);
 		usuarioRepository.save(usuario);
 
-		Categoria categoria1 = new Categoria(
-			"Categoria Z",
-			"categoriaz"
-		);
+		Categoria categoria1 = new Categoria("Romance", "romance");
 		categoriaRepository.save(categoria1);
 
-		Categoria categoria2 = new Categoria(
-			"Categoria X",
-			"categoriax"
-		);
+		Categoria categoria2 = new Categoria("Tecnologia", "tecnologia");
 		categoriaRepository.save(categoria2);
 
-		Categoria categoria3 = new Categoria(
-			"Categoria Y",
-			"categoriay"
-		);
+		Categoria categoria3 = new Categoria("Ficção Científica", "ficcao-cientifica");
 		categoriaRepository.save(categoria3);
 
 		Livro livro = new Livro(
 			"teste.png",
-			"Livro X",
-			"livrox",
-			"livro x.",
+			"Orgulho e Preconceito",
+			"orgulho-e-preconceito",
+			"Um clássico romance de Jane Austen.",
 			true,
-			100,
-			BigDecimal.valueOf(99.90),
-			LocalDate.of(2025, 1, 1),
+			50,
+			BigDecimal.valueOf(39.90),
+			LocalDate.of(2023, 5, 10),
 			categoria1
 		);
 		livroRepository.save(livro);
 
 		livro = new Livro(
 			"teste.png",
-			"Livro Y",
-			"livroy",
-			"livro y.",
+			"Clean Code",
+			"clean-code",
+			"Um guia para escrever código limpo, por Robert C. Martin.",
 			true,
-			100,
-			BigDecimal.valueOf(999.90),
-			LocalDate.of(2025, 1, 1),
+			30,
+			BigDecimal.valueOf(99.90),
+			LocalDate.of(2022, 8, 15),
 			categoria2
 		);
 		livroRepository.save(livro);
 		
 		livro = new Livro(
 			"teste.png",
-			"Livro Z",
-			"livroz",
-			"livro z.",
-			false,
-			100,
-			BigDecimal.valueOf(9.90),
-			LocalDate.of(2025, 1, 1),
+			"Duna",
+			"duna",
+			"O maior épico de ficção científica de todos os tempos.",
+			true,
+			20,
+			BigDecimal.valueOf(59.90),
+			LocalDate.of(2021, 11, 1),
 			categoria3
 		);
 		livroRepository.save(livro);
 		
 		livro = new Livro(
 			"teste.png",
-			"Livro XXX",
-			"livroxxx",
-			"livro xxx.",
+			"O Programador Pragmático",
+			"programador-pragmatico",
+			"Melhore suas habilidades de programação.",
 			true,
-			100,
-			BigDecimal.valueOf(99.90),
-			LocalDate.of(2025, 1, 1),
-			categoria1
-		);
-		livroRepository.save(livro);
-		
-		livro = new Livro(
-			"teste.png",
-			"Livro Xxxxx",
-			"livroxxxxx",
-			"livro xxxxx.",
-			true,
-			100,
-			BigDecimal.valueOf(99.90),
-			LocalDate.of(2025, 1, 1),
-			categoria1
-		);
-		livroRepository.save(livro);
-		
-		livro = new Livro(
-			"teste.png",
-			"Livro YYYY",
-			"livroyyyy",
-			"livro yyyy.",
-			true,
-			666,
-			BigDecimal.valueOf(666.00),
-			LocalDate.of(2025, 1, 1),
+			15,
+			BigDecimal.valueOf(89.90),
+			LocalDate.of(2023, 2, 20),
 			categoria2
+		);
+		livroRepository.save(livro);
+		
+		livro = new Livro(
+			"teste.png",
+			"Admirável Mundo Novo",
+			"admiravel-mundo-novo",
+			"Um clássico da ficção científica por Aldous Huxley.",
+			true,
+			25,
+			BigDecimal.valueOf(49.90),
+			LocalDate.of(2020, 7, 12),
+			categoria3
+		);
+		livroRepository.save(livro);
+		
+		livro = new Livro(
+			"teste.png",
+			"Dom Casmurro",
+			"dom-casmurro",
+			"Obra-prima de Machado de Assis.",
+			true,
+			40,
+			BigDecimal.valueOf(29.90),
+			LocalDate.of(2019, 3, 5),
+			categoria1
 		);
 		livroRepository.save(livro);
 	}

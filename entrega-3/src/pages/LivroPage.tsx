@@ -78,7 +78,7 @@ const LivroPage = () => {
           <div className="col-md-4">
             <div className="card mb-4 shadow-sm">
               <img
-                src={livro.imagem}
+                src={livro.imagem.startsWith("/") ? livro.imagem : "/" + livro.imagem}
                 alt={livro.nome}
                 className="card-img-top"
               />
@@ -212,6 +212,7 @@ const LivroPage = () => {
                     onClick={() => adicionarLivro(livro)}
                     type="button"
                     className="btn btn-outline-secondary btn-sm"
+                    disabled={!!livroNoCarrinho && livroNoCarrinho.quantidade >= livro.qtdEstoque}
                   >
                     +
                   </button>
