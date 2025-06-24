@@ -26,7 +26,7 @@ const Card = ({
 
   return (
     <div className="card mb-4 shadow-sm">
-      <img src={livro.imagem} alt={livro.nome} className="card-image-top" />
+      <img src={livro.imagem} alt={livro.nome} className="card-img-top" />
       <div className="card-body">
         <h5 className="card-title">{livro.nome}</h5>
         <p className="card-text">{livro.descricao}</p>
@@ -69,6 +69,7 @@ const Card = ({
               onClick={() => adicionarLivro(livro)}
               type="button"
               className="btn btn-outline-secondary btn-sm"
+              disabled={!!livroNoCarrinho && livroNoCarrinho.quantidade >= livro.qtdEstoque}
             >
               +
             </button>

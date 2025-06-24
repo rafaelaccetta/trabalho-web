@@ -1,4 +1,6 @@
 :root {
+  --bs-primary: #4f46e5;
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -24,10 +26,16 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
@@ -52,6 +60,20 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.footer {
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: relative;
+  background: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  flex-shrink: 0;
+}
+
+.main-content {
+  padding-top: 64px;
 }
 
 @media (prefers-color-scheme: light) {
