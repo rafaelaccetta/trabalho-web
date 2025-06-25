@@ -106,7 +106,7 @@ const CardsPorSlugCategoriaPage = () => {
       </h5>
       <div className="row">
         {livros.map((livro, index) => (
-          <div key={livro.id} className="col-lg-2 col-md-3 col-sm-4 col-6">
+          <div key={livro.id} className="col-lg-4 col-md-4 col-sm-4 col-6 h-75">
             <Card
               livro={livro}
               livroNoCarrinho={livrosNoCarrinho[index]}
