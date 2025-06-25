@@ -24,10 +24,10 @@ public class AutenticacaoController {
         System.out.println(usuario.getConta() + " " + usuario.getSenha());
         Usuario usuarioLogado = autenticacaoService.login(usuario);
         if (usuarioLogado != null) {
-            System.out.println(usuarioLogado.getId());
+            
             return new TokenResponse(usuarioLogado.getId());
         } else {
-            System.out.println("err");
+            
             return new TokenResponse(0);
         }
     }

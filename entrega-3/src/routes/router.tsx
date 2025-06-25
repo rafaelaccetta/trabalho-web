@@ -5,7 +5,6 @@ import LivrosPage from "../pages/LivrosPage";
 import CarrinhoPage from "../pages/CarrinhoPage";
 import LoginPage from "../pages/LoginPage";
 import LivroPage from "../pages/LivroPage";
-import PedidosPage from "../pages/PedidosPage";
 import ErrorPage from "../pages/ErrorPage";
 import FavoritosPage from "../pages/FavoritosPage";
 import PrivateRoutes from "./PrivateRoutes";
@@ -25,7 +24,7 @@ const router = createBrowserRouter([
                 ]
             },
             {path: "carrinho", element: <CarrinhoPage />},
-            {path: "pedidos", element: <PedidosPage />},
+            {path: "favoritos", element: <FavoritosPage />},
             {path: "login", element: <LoginPage />},
             {path: "livro/:id", element: <LivroPage />}
         ]
