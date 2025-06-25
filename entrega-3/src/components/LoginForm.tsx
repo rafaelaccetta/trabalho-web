@@ -112,7 +112,11 @@ const LoginForm = () => {
             </svg>
             Entrar
           </button>
+          <div className="mt-4"><a href="/cadastro-usuario">Não tem uma conta? Cadastre-se!</a></div>
         </div>
+         
+        
+       
       </div>
     </form>
   );

@@ -31,4 +31,9 @@ public class AutenticacaoController {
             return new TokenResponse(0);
         }
     }
+
+    @PostMapping("cadastro")
+    public TokenResponse cadastrarUsuario(@RequestBody Usuario usuario) {
+        return autenticacaoService.cadastrarUsuario(usuario);
+    }
 }

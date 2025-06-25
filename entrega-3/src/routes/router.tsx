@@ -9,6 +9,8 @@ import ErrorPage from "../pages/ErrorPage";
 import FavoritosPage from "../pages/FavoritosPage";
 import PrivateRoutes from "./PrivateRoutes";
 import CardsPorSlugCategoriaPage from "../pages/CardsPorSlugCategoriaPage";
+import CadastroUsuarioPage from "../pages/CadastroUsuarioPage";
+import CadastroLivroPage from "../pages/CadastroLivroPage";
 
 const router = createBrowserRouter([
     {
@@ -24,9 +26,10 @@ const router = createBrowserRouter([
                 ]
             },
             {path: "carrinho", element: <CarrinhoPage />},
-            {path: "favoritos", element: <FavoritosPage />},
             {path: "login", element: <LoginPage />},
-            {path: "livro/:id", element: <LivroPage />}
+            {path: "livro/:id", element: <LivroPage />},
+            {path: "cadastro-usuario", element: <CadastroUsuarioPage />},
+            {path: "cadastro-livro", element: <CadastroLivroPage />}
         ]
     },
     {
