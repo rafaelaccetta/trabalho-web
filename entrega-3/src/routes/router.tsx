@@ -11,11 +11,13 @@ import PrivateRoutes from "./PrivateRoutes";
 import CardsPorSlugCategoriaPage from "../pages/CardsPorSlugCategoriaPage";
 import CadastroUsuarioPage from "../pages/CadastroUsuarioPage";
 import CadastroLivroPage from "../pages/CadastroLivroPage";
+import TabelaPage from "../pages/TabelaPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout />,
+        errorElement: <ErrorPage />,
         children: [
             {path: "", element: <HomePage /> },
             {
@@ -29,7 +31,8 @@ const router = createBrowserRouter([
             {path: "login", element: <LoginPage />},
             {path: "livro/:id", element: <LivroPage />},
             {path: "cadastro-usuario", element: <CadastroUsuarioPage />},
-            {path: "cadastro-livro", element: <CadastroLivroPage />}
+            {path: "cadastro-livro", element: <CadastroLivroPage />},
+            {path: "tabela", element: <TabelaPage />}
         ]
     },
     {

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import useLivroStore from "../store/LivroStore";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useRecuperarLivroPorId from "../hooks/useRecuperarLivroPorId";
-import useRemoverLivroPorId from "../hooks/useRemoverivroPorId";
 import type Livro from "../interfaces/Livro";
 import type { LivroCarrinho } from "./CardsPorSlugCategoriaPage";
 
@@ -50,15 +48,13 @@ const LivroPage = () => {
     });
   };
 
-  const [removido, setRemovido] = useState(false);
-
   const { id } = useParams();
 
   const {
     data: livro,
     isPending: carregandoLivro,
     error: errorLivro,
-  } = useRecuperarLivroPorId(+id!, removido);
+  } = useRecuperarLivroPorId(+id!, false);
 
   const livroNoCarrinho = carrinho.find(
     (item: LivroCarrinho) => item.idLivro === livro?.id
