@@ -109,6 +109,7 @@ const CadastroUsuarioForm = () => {
             {...register("senha")}
             type="password"
             id="senha"
+            placeholder="A senha deve ter pelo menos 4 caracteres."
             className={errors.senha ? "form-control form-control-sm is-invalid" : "form-control form-control-sm"}
           />
           <div className="invadid-feedback">
@@ -126,6 +127,7 @@ const CadastroUsuarioForm = () => {
             {...register("confirmacaoSenha")}
             type="password"
             id="confirmacaoSenha"
+            placeholder="Insira novamente a senha."
             className={errors.confirmacaoSenha ? "form-control form-control-sm is-invalid" : "form-control form-control-sm"}
           />
           <div className="invadid-feedback">

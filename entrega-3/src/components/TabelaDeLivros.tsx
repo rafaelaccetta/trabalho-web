@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import type Livro from "../interfaces/Livro";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useLivroStore from "../store/LivroStore";
 import useRecuperarLivrosComPaginacao from "../hooks/useRecuperarLivrosComPaginacao";
 import useRemoverLivroPorId from "../hooks/useRemoverLivroPorId";
@@ -9,6 +9,7 @@ const TabelaDeLivros = () => {
   const pagina = useLivroStore((s) => s.pagina);
   const tamanho = useLivroStore((s) => s.tamanho);
   const nome = useLivroStore((s) => s.nome);
+  const navigate = useNavigate()
 
   const setPagina = useLivroStore((s) => s.setPagina);
   const setMensagem = useLivroStore((s) => s.setMensagem);
@@ -29,6 +30,7 @@ const TabelaDeLivros = () => {
   const tratarRemocao = (id: number) => {
     removerLivro(id);
     setPagina(0);
+    window.location.reload();
   };
 
   if (carregandoLivros)
