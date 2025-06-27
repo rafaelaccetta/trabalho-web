@@ -146,9 +146,9 @@ const LivroPage = () => {
                   >
                     <div className="accordion-body">
                       <p>Estoque: {livro.qtdEstoque}</p>
-                      <p>Editora: XXXXXX</p>
-                      <p>Idioma: XXXXXX</p>
-                      <p>Número de Páginas: XXXXXX</p>
+                      <p>Editora: Editora dos livros</p>
+                      <p>Idioma: portugês</p>
+                      <p>Número de Páginas: 350</p>
                     </div>
                   </div>
                 </div>
@@ -171,9 +171,13 @@ const LivroPage = () => {
                     data-bs-parent="#accordionExample"
                   >
                     <div className="accordion-body">
-                      <div className="alert alert-danger" role="alert">
-                        {livro.disponivel ? "Disponível :)" : "Indisponível :("}
-                      </div>
+                      {livro.disponivel ?
+                        <div className="alert alert-success" role="alert">
+                          "Disponível :)"
+                        </div> :
+                        <div className="alert alert-danger" role="alert">
+                          "indisponível :("
+                        </div>}
                     </div>
                   </div>
                 </div>

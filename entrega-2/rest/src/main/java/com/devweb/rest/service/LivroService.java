@@ -53,4 +53,13 @@ public class LivroService {
         return livroRepository.recuperarLivrosPorSlugCategoria(slugCategoria);
     }
 
+    public Page<Livro> recuperarLivrosPaginadosPorSlugCategoria(String slugCategoria, Pageable pageable) {
+        if(!slugCategoria.isEmpty()) {
+            return livroRepository.recuperarLivrosPaginadosPorSlugCategoria(slugCategoria, pageable);
+        }
+        else {
+            return livroRepository.recuperarLivrosPaginados(pageable);
+        }
+    }
+
 }

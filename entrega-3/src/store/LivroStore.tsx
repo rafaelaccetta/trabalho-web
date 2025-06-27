@@ -16,7 +16,7 @@ interface LivroStore {
 
 const useLivroStore = create<LivroStore>((set) => ({
     pagina: 0,
-    tamanho: 5,
+    tamanho: 6,
     nome: "",
     mensagem: "",
     livroSelecionado: {} as Livro,

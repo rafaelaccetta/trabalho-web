@@ -41,4 +41,24 @@ public interface LivroRepository extends JpaRepository<Livro, Long>{
             "where c.slug = :slugCategoria " +
             "order by l.id")
     List<Livro> recuperarLivrosPorSlugCategoria(@Param("slugCategoria") String slugCategoria);
+
+    @Query(
+            value = "select l from Livro l " +
+                    "left outer join fetch l.categoria c " +
+                    "where c.slug = :slug " +
+                    "order by l.id",
+            countQuery = "select count(l) " +
+                    "from Livro l " +
+                    "left outer join l.categoria c " +
+                    "where c.slug = :slug "
+    )
+    Page<Livro> recuperarLivrosPaginadosPorSlugCategoria(@Param("slug") String slug, Pageable pageable);
+
+    @Query(
+            value = "select l from Livro l " +
+                    "left outer join fetch l.categoria c " +
+                    "order by l.id",
+            countQuery = "select count(l) from Livro l "
+    )
+    Page<Livro> recuperarLivrosPaginados(Pageable pageable);
 }

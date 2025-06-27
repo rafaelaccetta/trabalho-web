@@ -87,15 +87,17 @@ const CarrinhoPage = () => {
     if (livroCarrinho) livrosNoCarrinho.push({ livro, livroCarrinho });
   });
 
-    if(livrosNoCarrinho.length == 0) return (
-    <>
-      <h4>Carrinho vazio!</h4>
+  if (livrosNoCarrinho.length == 0)
+    return (
+      <>
+        <h4 className="mb-4">Carrinho vazio!</h4>
         <div className="">
           <a href="./livros" className="btn btn-secondary">
             Continuar Comprando
           </a>
         </div>
-    </>)
+      </>
+    );
 
   return (
     <div className="container mt-4" style={{ marginTop: "720px" }}>
@@ -173,7 +175,14 @@ const CarrinhoPage = () => {
                     })}
                   </td>
                   <td className="text-center">
-                    <button className="btn btn-danger btn-sm" onClick={() => alterarQuantidade(livroComLivroCarrinho.livro, 0)}>Remover</button>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() =>
+                        alterarQuantidade(livroComLivroCarrinho.livro, 0)
+                      }
+                    >
+                      Remover
+                    </button>
                   </td>
                 </tr>
               ))}

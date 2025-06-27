@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import type Livro from "../interfaces/Livro";
 import { type LivroCarrinho } from "../pages/CardsPorSlugCategoriaPage";
 import heart from "../assets/icons/heart.svg";
@@ -25,7 +24,7 @@ const Card = ({
   const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
 
   return (
-    <div className="card mb-4 shadow-sm">
+    <div className="card mb-4 shadow-sm" >
       <img
         src={livro.imagem.startsWith("/") ? livro.imagem : "/" + livro.imagem}
         alt={livro.nome}

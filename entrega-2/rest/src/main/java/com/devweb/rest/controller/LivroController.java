@@ -65,4 +65,19 @@ public class LivroController {
         return resultadoPaginado;
     }
 
+    @GetMapping("categoria/paginacao")
+    public ResultadoPaginado<Livro> recuperarLivrosPaginadosPorSlugCategoria(
+            @RequestParam(value = "pagina", defaultValue = "0") int pagina,
+            @RequestParam(value = "tamanho", defaultValue = "3") int tamanho,
+            @RequestParam(value = "slugCategoria", defaultValue = "") String slugCategoria) {
+        Pageable pageable = PageRequest.of(pagina, tamanho);
+        Page<Livro> page = livroService.recuperarLivrosPaginadosPorSlugCategoria(slugCategoria, pageable);
+        ResultadoPaginado<Livro> resultadoPaginado = new ResultadoPaginado<>(
+                page.getTotalElements(),
+                page.getTotalPages(),
+                page.getNumber(),
+                page.getContent());
+        return resultadoPaginado;
+    }
+
 }
