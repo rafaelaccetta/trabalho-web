@@ -5,6 +5,7 @@ import heart from "../assets/icons/heart.svg";
 import shopping_bag from "../assets/icons/shopping_bag.svg";
 import useUsuarioStore from "../store/UsuarioStore";
 import useLivroStore from "../store/LivroStore";
+import type Livro from "../interfaces/Livro"
 
 const NavBar = () => {
   const usuarioLogado = useUsuarioStore((s) => s.usuarioLogado);
@@ -50,6 +51,14 @@ const NavBar = () => {
                 style={{ display: usuarioLogado ? "block" : "none" }}
               >
                 Controle do Estoque
+              </NavLink>
+              <NavLink
+                onClick={() => setLivroSelecionado({} as Livro)}
+                className="nav-item nav-link"
+                to="/cadastro-livro"
+                style={{ display: usuarioLogado ? "block" : "none" }}
+              >
+                Cadastrar Livro
               </NavLink>
               <NavLink
                 className="nav-item nav-link"

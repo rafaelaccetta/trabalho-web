@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import type Livro from "../interfaces/Livro";
 import type { LivroCarrinho } from "./CardsPorSlugCategoriaPage";
 import useRecuperarLivros from "../hooks/useRecuperarLivros";
-import CarrinhoPlaceholderPage from "./CarrinhoPlaceholderPage";
 
 interface LivroComLivroCarrinho {
   livro: Livro;

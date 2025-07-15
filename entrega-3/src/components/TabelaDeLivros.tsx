@@ -9,10 +9,12 @@ const TabelaDeLivros = () => {
   const pagina = useLivroStore((s) => s.pagina);
   const tamanho = useLivroStore((s) => s.tamanho);
   const nome = useLivroStore((s) => s.nome);
-  const navigate = useNavigate()
 
   const setPagina = useLivroStore((s) => s.setPagina);
   const setMensagem = useLivroStore((s) => s.setMensagem);
+  const setLivroSelecionado = useLivroStore((s) => s.setLivroSelecionado)
+
+  const navigate = useNavigate();
 
   const {
     data: resultadoPaginado,
@@ -100,6 +102,16 @@ const TabelaDeLivros = () => {
                   type="button"
                 >
                   Remover
+                </button>
+                <button
+                  onClick={() => {
+                    setLivroSelecionado(livro);
+                    navigate("/cadastro-livro")
+                  }}
+                  className="btn btn-success btn-sm"
+                  type="button"
+                >
+                  Editar
                 </button>
               </td>
             </tr>
