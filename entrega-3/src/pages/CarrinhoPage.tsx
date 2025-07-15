@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type Livro from "../interfaces/Livro";
 import type { LivroCarrinho } from "./CardsPorSlugCategoriaPage";
 import useRecuperarLivros from "../hooks/useRecuperarLivros";
@@ -17,6 +17,8 @@ const CarrinhoPage = () => {
   useEffect(() => {
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
   }, [carrinho]);
+
+  const inputRef = useRef(null);
 
   const adicionarLivro = (livro: Livro) => {
     setCarrinho((prevCarrinho: LivroCarrinho[]) => {
@@ -56,6 +58,7 @@ const CarrinhoPage = () => {
     setCarrinho((prevCarrinho: LivroCarrinho[]) => {
       const existe = prevCarrinho.find((item) => item.idLivro === livro.id);
       if (existe) {
+        if(novaQuantidade > 0){
         const novoCarrinho: LivroCarrinho[] = prevCarrinho.map(
           (item: LivroCarrinho) =>
             item.idLivro === livro.id
@@ -63,6 +66,7 @@ const CarrinhoPage = () => {
               : item
         );
         return novoCarrinho.filter((item) => item.quantidade > 0);
+        } else return prevCarrinho;
       } else {
         throw new Error("Erro ao alterar quantidade no carrinho.");
       }
@@ -154,10 +158,10 @@ const CarrinhoPage = () => {
                       value={livroComLivroCarrinho.livroCarrinho.quantidade}
                       onChange={(e) => {
                         const valor = e.target.valueAsNumber;
-                        if (!Number.isNaN(valor)) {
+                        if(!Number.isNaN(valor) && valor > 0){
                           alterarQuantidade(
                             livroComLivroCarrinho.livro,
-                            e.target.valueAsNumber
+                            valor
                           );
                         }
                       }}
