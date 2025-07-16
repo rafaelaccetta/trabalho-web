@@ -4,7 +4,7 @@ import queryClient from "../main";
 import isErrorResponse from "../util/isErrorResponse";
 
 const alterarLivro = async (livro: Livro) => {
-  const response = await fetch("http://localhost:8080/Livros", {
+  const response = await fetch("http://localhost:8080/livros", {
     method: "PUT",
     headers: {
       // tipo do conteúdo que o back-end espera receber

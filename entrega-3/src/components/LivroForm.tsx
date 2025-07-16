@@ -145,14 +145,14 @@ const LivroForm = () => {
       alterarLivro(livro, {
         onSuccess: (livroAlterado: Livro) => {
           setMensagem("Livro alterado com sucesso!");
-          navigate("/produtos/" + livroAlterado.id);
+          navigate("/livro/" + livroAlterado.id);
         },
       });
     } else {
       cadastrarLivro(livro, {
         onSuccess: (livroCadastrado: Livro) => {
           setMensagem("Livro cadastrado com sucesso!");
-          navigate("/produtos/" + livroCadastrado.id);
+          navigate("/livro/" + livroCadastrado.id);
         },
       });
     }
