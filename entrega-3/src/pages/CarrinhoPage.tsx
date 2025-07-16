@@ -157,13 +157,8 @@ const CarrinhoPage = () => {
                       style={{ maxWidth: "80px" }}
                       value={livroComLivroCarrinho.livroCarrinho.quantidade}
                       onChange={(e) => {
-                        const valor = e.target.valueAsNumber;
-                        if(!Number.isNaN(valor) && valor > 0){
-                          alterarQuantidade(
-                            livroComLivroCarrinho.livro,
-                            valor
-                          );
-                        }
+                        const valor = parseInt(e.target.value) || 1;
+                        if(valor >= 1) alterarQuantidade(livroComLivroCarrinho.livro, valor)
                       }}
                     />
                   </td>

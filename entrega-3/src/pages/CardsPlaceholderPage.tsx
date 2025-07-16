@@ -2,7 +2,7 @@ import React from 'react'
 
 const CardsPlaceholderPage = () => {
   return (
-    <div>CardsPlaceholderPage</div>
+    <div>Carregando livros...</div>
   )
 }
 
